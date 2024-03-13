@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Out Reminder</title>
+    <style>
+        * {
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <p>Dear Store Managers,</p>
+    <br>
+    {% if out_of_stock|length > 0 %}
+    <p>The following products are currently out of stock:</p>
+    <ul>
+        {% for product in out_of_stock %}
+        <li><strong>Product ID:</strong> {{ product.id }}, <strong>Name:</strong> {{ product.name }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <br>
+    {% if low_stock|length > 0 %}
+    <p>The following products are currently low on stock:</p>
+    <ul>
+        {% for product in low_stock %}
+        <li><strong>Product ID:</strong> {{ product.id }}, <strong>Name:</strong> {{ product.name }}, <strong>Available Stock:</strong> {{ product.available_stock }} {{ product.unit }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <br>
+    <p>Please reorder the products as appropriate.</p>
+</body>
+</html>

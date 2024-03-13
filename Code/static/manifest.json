@@ -1,0 +1,26 @@
+{
+    "name": "GrocerEase - Groceries just a click away",
+    "short_name": "GrocerEase",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#FB7C22",
+    "icons": [
+        {
+            "src": "/static/images/GrocerEaseIcon.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/static/images/GrocerEaseIcon.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "/static/images/GrocerEaseIcon_Maskable.png",
+            "sizes": "384x384",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}

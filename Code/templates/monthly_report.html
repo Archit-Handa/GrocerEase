@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrocerEase Monthly Report - {{month}}</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <style>
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            width: 150px;
+        }
+
+        img {
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .table>thead>tr>th {
+            background-color: rgb(251, 124, 34);
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: #000;
+            background-color: rgb(251, 124, 34);
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.2s ease-in-out;
+            width: 200px;
+        }
+
+        button:hover {
+            background-color: rgb(255, 89, 0);
+        }
+    </style>
+
+    <script src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+</head>
+
+<body>
+    <div id="content">
+        <div class="header m-3">
+            <div>
+                <h3 class="text-dark">GrocerEase Monthly Report - {{month}}</h3>
+                <p class="fs-6 text-secondary m-0"><span class="h6">Username:</span> {{username}}</p>
+                <p class="fs-6 text-secondary m-0"><span class="h6">Email:</span> {{email}}</p>
+            </div>
+            <img class="logo" src="cid:GrocerEaseLogo" alt="GrocerEase Logo">
+        </div>
+        {% if orders|length > 0 %}
+        <div class="m-3">
+            <table class="table table-striped">
+                <thead class="table-orange">
+                    <tr>
+                        <th scope="col">Order #</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col" class="text-end">Price per unit (in ₹)</th>
+                        <th scope="col" class="text-end">Quantity</th>
+                        <th scope="col">Unit</th>
+                        <th scope="col" class="text-end">Subtotal (in ₹)</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider ">
+                    {% for order in orders %}
+                    {% for item in order.order_details %}
+                    <tr>
+                        <th scope="row">{{order.id}}</th>
+                        <td>{{order.order_date}}</td>
+                        <td>{{item.name}}</td>
+                        <td class="text-end">{{item.rate_per_unit}}</td>
+                        <td class="text-end">{{item.quantity}}</td>
+                        <td>{{item.unit}}</td>
+                        <td class="text-end">{{item.quantity * item.rate_per_unit}}</td>
+                    </tr>
+                    {% endfor %}
+                    {% endfor %}
+                </tbody>
+                <tfoot class="table-secondary table-group-divider">
+                    <tr>
+                        <th scope="col" colspan="6">Grand Total Monthly Expenditure</th>
+                        <th scope="col" class="text-end">₹ {{total}}</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        {% else %}
+        <div class="m-3">
+            <p class="fs-5 text-dark">You have not made any orders in {{month}}.</p>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="text-start m-3">
+        <button id="downloadPdfButton">Download PDF</button>
+    </div>
+
+    <script>
+        document.getElementById('downloadPdfButton').addEventListener('click', function () {
+            const element = document.getElementById('content');
+            const opt = {
+                margin: 0,
+                filename: 'Monthly_Report.pdf',
+                image: { type: 'png', quality: 0.98 },
+                html2canvas: { scale: 1 },
+                jsPDF: { unit: 'pt', format: 'a4', orientation: 'portrait' }
+            };
+            html2pdf().set(opt).from(element).save();
+        });
+    </script>
+</body>
+
+</html>

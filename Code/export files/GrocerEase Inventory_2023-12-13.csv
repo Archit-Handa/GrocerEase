@@ -1,0 +1,14 @@
+Product ID,Product Name,Category ID,Category Name,Description,Unit,Available Stock Units,Rate Per Unit (in ₹),Units Sold Total,Units Sold Last Month
+1,Apple,1,Fruits & Vegetables,Red juicy apples straight from the valley of Kashmir,kg,97,120.0,3,3
+2,Orange,1,Fruits & Vegetables,Fresh oranges from the orchards of Nagpur,kg,111,85.0,9,6
+4,Potato,1,Fruits & Vegetables,Daily essential potato available at your comfort,kg,196,40.0,4,0
+5,Tomato,1,Fruits & Vegetables,Ripe tomatoes to add freshness to your dishes,kg,93,45.0,2,0
+6,Milk,6,Dairy,Pure Milk sourced from the healthiest cows,ltr,0,70.0,0,0
+7,Papaya,1,Fruits & Vegetables,"Sweet, delicious, and nutritious papaya at your ease",pc,29,40.0,1,0
+8,Rajma,2,Grains and Pulses,Red Jammu Rajma at you doorstep,kg,59,200.0,1,0
+9,Rice,2,Grains and Pulses,Long-grain Basmati rice to make everyday special,kg,100,250.0,0,0
+10,Bread,4,Daily Staples,Freshly baked to kickstart your day,pc,3,25.0,0,0
+11,RedLabel Tea,4,Daily Staples,Darjeeling tea to freshen you up,pc,249,50.0,1,0
+13,Cadbury Oreo Biscuits,5,Munchies,Chocolatey biscuits filled with vanilla cream,pc,147,20.0,3,3
+14,Butter,6,Dairy,Salted butter made from the purest milk,pc,3,250.0,2,2
+15,Paneer,6,Dairy,Fresh silky paneer for your daily recipes,kg,19,300.0,1,0
